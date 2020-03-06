@@ -1,8 +1,8 @@
 pragma solidity >=0.4.25 <0.7.0;
 
 import "./ConvertLib.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721Full.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721Mintable.sol";
+import "./node_modules/@openzeppelin/contracts/token/ERC721/ERC721Full.sol";
+import "./node_modules/@openzeppelin/contracts/token/ERC721/ERC721Mintable.sol";
 
 
 // This is just a simple example of a coin-like contract.
