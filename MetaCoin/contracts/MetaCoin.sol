@@ -10,13 +10,13 @@ import "./node_modules/@openzeppelin/contracts/token/ERC721/ERC721Mintable.sol";
 // coin/token contracts. If you want to create a standards-compliant
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
-contract MetaCoin is ERC721Full, ERC721Mintable {
+contract Canard is ERC721Full, ERC721Mintable {
 	mapping (address => uint) balances;
 
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
-	constructor() ERC721Full("MyNFT", "MNFT") public {
-		balances[tx.origin] = 10000;
+	constructor() ERC721Full("Canard", "CND") public {
+		balances[tx.origin] = 300;
 	}
 
 	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
@@ -25,6 +25,13 @@ contract MetaCoin is ERC721Full, ERC721Mintable {
 		balances[receiver] += amount;
 		emit Transfer(msg.sender, receiver, amount);
 		return true;
+	}
+
+	function registerBreeder(address addr) public {
+    // owner approves buyers by address when they pass the whitelisting procedure
+    require(msg.sender == owner, "You are not authorized");
+
+    whitelist[addr] = true;
 	}
 
 	function getBalanceInEth(address addr) public view returns(uint){
