@@ -2,8 +2,11 @@ pragma solidity ^0.4.19;
 
 import "./node_modules/@openzeppelin/contracts/ownership/ownable.sol";
 import "./node_modules/@openzeppelin/contracts/math/safemath.sol";
+import "./node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./node_modules/@openzeppelin/contracts/GSN/Context.sol";
 
-contract Canard is Ownable,erc721 {
+
+contract Canard is Ownable,Context, ERC721 {
 
   using SafeMath for uint256;
 
@@ -30,7 +33,11 @@ contract Canard is Ownable,erc721 {
     NewCanard(id, _name,_hcol, _age,_race,_bcol);
   }
 
-  function deadAnimal(Canard )
+  
+  function deadAnimal(uint256 canardId) public {
+        require(_isApprovedOrOwner(_msgSender(), canardId), "ERC721Burnable: caller is not owner nor approved");
+        _burn(canardId);
+    }
 
 
   /*function createRandomCanard(string _name) public {
