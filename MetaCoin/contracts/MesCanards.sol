@@ -10,7 +10,7 @@ contract Canard is Ownable,Context, ERC721 {
 
   using SafeMath for uint256;
 
-  event NewCanard(uint canardId, string name, uint age);
+  event NewCanard(uint canardId, string name,string _hcol, uint _age,string _race, string _bcol);
 
 
   struct Canard {
@@ -40,11 +40,9 @@ contract Canard is Ownable,Context, ERC721 {
     }
 
 
-  /*function createRandomCanard(string _name) public {
-    require(ownerCanardCount[msg.sender] == 0);
-    uint randAge = ;
-    
-    _createCanard(_name,hcol, randAge,race,bcol);
+  function breedAnimal(string _name,uint256 id1,uint256 id2) public {
+    require(ownerCanardCount[msg.sender] == 0);    
+    _createCanard(_name,hcol, 0,race,bcol);
   }*/
 
 }
